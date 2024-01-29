@@ -1,5 +1,4 @@
 package org.example;
-
 import java.util.Scanner;
 import java.util.Date;
 import java.text.SimpleDateFormat;
@@ -8,11 +7,9 @@ import java.text.ParseException;
 class AgeChecker {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Привет! Как тебя зовут? ");
+        System.out.print("Как тебя зовут? ");
         String name = scanner.nextLine();
-        System.out.println("Приветствую, " + name + "!");
-
+        System.out.println("Привет, " + name);
         System.out.print("Введи свою дату рождения в формате ДД.ММ.ГГГГ: ");
         String birthDateStr = scanner.nextLine();
 
@@ -20,7 +17,7 @@ class AgeChecker {
             Date birthDate = parseDate(birthDateStr);
             checkAge(birthDate);
         } catch (ParseException e) {
-            System.out.println("Ошибка при разборе даты! Попробуй еще раз.");
+            System.out.println("Ошибка при вводе даты! Попробуйте еще раз.");
             return;
         } catch (AgeException e) {
             System.out.println(e.getMessage());
@@ -39,7 +36,6 @@ class AgeChecker {
     }
 
     static int calculateAge(Date birthDate, Date currentDate) {
-        // Расчет возраста на основе даты рождения и текущей даты
         long diff = currentDate.getTime() - birthDate.getTime();
         long ageInMillis = 1000L * 60 * 60 * 24 * 365;
         return (int) (diff / ageInMillis);
